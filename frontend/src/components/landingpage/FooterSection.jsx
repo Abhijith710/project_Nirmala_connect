@@ -136,7 +136,11 @@ const getModalBackground = () => {
               <Typography variant="h6" sx={{ fontSize: 16, mb: 1, color: '#fff' }}>
                 Notices
               </Typography>
-              <Link onClick={() => handleOpenModal('about')} underline="hover" sx={linkStyle} sx={{ cursor: 'pointer', ...linkStyle }}>
+              <Link 
+  onClick={() => handleOpenModal('about')} 
+  underline="hover" 
+  sx={{ cursor: 'pointer', ...linkStyle }}
+>
                 About Us
               </Link>
               <Link onClick={() => handleOpenModal('privacy')} underline="hover" sx={{ cursor: 'pointer', ...linkStyle }}>
