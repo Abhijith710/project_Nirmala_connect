@@ -1,10 +1,13 @@
 // src/components/admin/AdminSidebar.jsx
 
 import React from 'react';
-import { List, ListItemButton, ListItemText, Collapse } from '@mui/material';
+import { List, ListItemButton, ListItemText, Collapse, Typography } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
+  const navigate = useNavigate();
+
   const [openManageEvents, setOpenManageEvents] = React.useState(false);
   const [openManageUsers, setOpenManageUsers] = React.useState(false);
   const [openManageNews, setOpenManageNews] = React.useState(false);
@@ -13,8 +16,13 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
   const handleToggleManageUsers = () => setOpenManageUsers(!openManageUsers);
   const handleToggleManageNews = () => setOpenManageNews(!openManageNews);
 
+  const handleNavigateToNews = () => {
+    navigate('/news'); // Make sure "/news" is a valid route
+  };
+
   return (
     <List component="nav" sx={{ width: '100%', maxWidth: 250 }}>
+      
           <ListItemButton sx={{ pl: 2 }} onClick={() => setSelectedSection('default')}>
             <ListItemText primary="Home" />
           </ListItemButton>
@@ -37,6 +45,28 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
         </List>
       </Collapse>
 
+      {/* Manage News */}
+      <ListItemButton onClick={handleToggleManageNews}>
+      <ListItemText
+          primary="Manage News/Announcement"
+          primaryTypographyProps={{ noWrap: true }} // Keeps it one line
+        />
+        {openManageNews ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openManageNews} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }} onClick={handleNavigateToNews}>
+            <ListItemText primary="Add News/Announcement" />
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigateToNews('EditNews')}>
+            <ListItemText primary="Edit News" />
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeleteNews')}>
+            <ListItemText primary="Delete News" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
       {/* Manage Events */}
       <ListItemButton onClick={handleToggleManageEvents}>
         <ListItemText primary="Manage Events" />
@@ -53,6 +83,10 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
         </List>
       </Collapse>
 
+      {/* Traffic Analytics */}
+      <ListItemButton onClick={() => setSelectedSection('TrafficAnalytics')}>
+        <ListItemText primary="Traffic Analytics" />
+      </ListItemButton>
 
 
       {/* Manage News */}
@@ -75,3 +109,4 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
 };
 
 export default AdminSidebar;
+

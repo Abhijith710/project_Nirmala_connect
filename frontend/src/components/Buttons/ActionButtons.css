@@ -1,0 +1,54 @@
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  /* Base button styling */
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 14px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Edit Button (Green Theme) */
+  .edit-btn {
+    background-color: #4CAF50;      /* Green */
+    color: #ffffff;
+    border-color: #4CAF50;
+  }
+  
+  .edit-btn:hover {
+    background-color: #388E3C;      /* Darker green */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.4);
+  }
+  
+  /* Delete Button (Creative Red) */
+  .delete-btn {
+    background-color: #E53935;      /* Red */
+    color: #ffffff;
+    border-color: #E53935;
+  }
+  
+  .delete-btn:hover {
+    background-color: #C62828;      /* Darker red */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(198, 40, 40, 0.4);
+  }
+  
+  /* Add subtle animation on click */
+  .edit-btn:active,
+  .delete-btn:active {
+    transform: scale(0.95);
+  }
+  
+  
