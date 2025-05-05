@@ -12,6 +12,10 @@ import AddEvent from '../components/admin/AddEvent';
 import AddUser from '../components/admin/AddUser';
 // import RemoveUser from '../components/admin/RemoveUser';
  import UserList from '../components/admin/UserList';
+import Header from '../components/News/NewsPage';
+import NewsPage from '../components/News/NewsPage';
+import DeletedUsers from '../components/admin/DeletedUsers';
+import TrafficAnalytics from '../components/admin/TrafficAnalytics';
 // import AddNews from '../components/admin/AddNews';
 // import EditNews from '../components/admin/EditNews';
 // import DeleteNews from '../components/admin/DeleteNews';
@@ -24,28 +28,22 @@ const AdminDashboard = () => {
     switch (selectedSection) {
       case 'AddEvent':
         return <AddEvent />;
-      case 'EditEvent':
-        return <EditEvent />;
-      case 'DeleteEvent':
-        return <DeleteEvent />;
+      case 'ViewEvent':
+        return <ViewEvent />;
       case 'AddUser':
         return <AddUser />;
-      case 'RemoveUser':
-        return <RemoveUser />;
       case 'UserList':
         return <UserList />;
+        case 'DeletedUserList':
+          return <DeletedUsers />;
       case 'AddNews':
         return <AddNews />;
-      case 'EditNews':
-        return <EditNews />;
-      case 'DeleteNews':
-        return <DeleteNews />;
-      case 'TrafficAnalytics':
-        return <TrafficAnalytics />;
+      case 'ViewNews':
+        return <NewsPage />;
       default:
         return (
           <Box p={3}>
-            Welcome to Admin Dashboard. Please select an option from the sidebar.
+           <TrafficAnalytics />;
           </Box>
         );
     }

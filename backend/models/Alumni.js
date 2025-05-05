@@ -58,8 +58,12 @@ const alumniSchema = new mongoose.Schema({
   role: {
     type: String,
     default: 'Alumni',
+  },
+  status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active', // Default status is active
   }
-  
 }, { timestamps: true });
 
 module.exports = mongoose.model('Alumni', alumniSchema);

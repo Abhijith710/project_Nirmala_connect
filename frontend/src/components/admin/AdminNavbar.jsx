@@ -1,45 +1,77 @@
 // src/components/Admin/AdminNavbar.jsx
 
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-import LogoIcon from '@mui/icons-material/School'; // Same logo as landing page
 import { useNavigate } from 'react-router-dom';
+import { FaGraduationCap, FaUserCircle } from 'react-icons/fa';
 
 const AdminNavbar = () => {
   const navigate = useNavigate();
 
   const handleProfile = () => {
-    // Navigate to admin profile page (to be created later)
     navigate('/admin/profile');
   };
 
   const handleLogout = () => {
-    // Clear any admin session here if you have
     navigate('/');
   };
 
   return (
-    <AppBar position="fixed" elevation={4} sx={{ backgroundColor: '#ffffff', color: '#000000' }}>
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Logo and Name */}
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <LogoIcon sx={{ mr: 1 }} />
-          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-            Nirmala Connect
-          </Typography>
-        </Box>
+    <header
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        backgroundColor: '#1976D2',
+        padding: '12px 20px',
+        borderRadius: '0 0 10px 10px',
+        color: '#FFFFFF',
+      }}
+    >
+      {/* Left: Logo and Title */}
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+        <FaGraduationCap size={24} style={{ marginRight: '10px' }} />
+        <h1 style={{ fontSize: '18px', fontWeight: 'bold', margin: 0 }}>Nirmala Connect</h1>
+      </div>
 
-        {/* Buttons */}
-        <Box>
-          <Button color="inherit" onClick={handleProfile}>
-            Profile
-          </Button>
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
+      {/* Right: Profile and Logout */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          flexWrap: 'wrap',
+        }}
+      >
+        <FaUserCircle
+          size={26}
+          onClick={handleProfile}
+          style={{ cursor: 'pointer' }}
+          title="Profile"
+        />
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '8px 14px',
+            backgroundColor: '#F57C00',
+            border: 'none',
+            borderRadius: '6px',
+            color: '#FFFFFF',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    </header>
   );
 };
 

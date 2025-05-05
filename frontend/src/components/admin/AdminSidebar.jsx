@@ -23,6 +23,9 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
   return (
     <List component="nav" sx={{ width: '100%', maxWidth: 250 }}>
       
+          <ListItemButton sx={{ pl: 2 }} onClick={() => setSelectedSection('default')}>
+            <ListItemText primary="Home" />
+          </ListItemButton>
       {/* Manage Users */}
       <ListItemButton onClick={handleToggleManageUsers}>
         <ListItemText primary="Manage Users" />
@@ -36,8 +39,8 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('UserList')}>
             <ListItemText primary="User List" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('RemoveUser')}>
-            <ListItemText primary="Remove User" />
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeletedUserList')}>
+            <ListItemText primary="Deleted Users" />
           </ListItemButton>
         </List>
       </Collapse>
@@ -74,11 +77,8 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('AddEvent')}>
             <ListItemText primary="Add Event" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('EditEvent')}>
-            <ListItemText primary="Edit Event" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeleteEvent')}>
-            <ListItemText primary="Delete Event" />
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('ViewEvent')}>
+            <ListItemText primary="View Event" />
           </ListItemButton>
         </List>
       </Collapse>
@@ -87,6 +87,23 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
       <ListItemButton onClick={() => setSelectedSection('TrafficAnalytics')}>
         <ListItemText primary="Traffic Analytics" />
       </ListItemButton>
+
+
+      {/* Manage News */}
+      <ListItemButton onClick={handleToggleManageNews}>
+        <ListItemText primary="Manage News" />
+        {openManageNews ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openManageNews} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('AddNews')}>
+            <ListItemText primary="Add News" />
+          </ListItemButton>
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('ViewNews')}>
+            <ListItemText primary="View News" />
+          </ListItemButton>
+        </List>
+      </Collapse>
     </List>
   );
 };

@@ -36,6 +36,11 @@ const loginRoutes = require('./routes/LoginRoutes');
 app.use('/api/login', loginRoutes);
 
 
+
+const eventRoutes = require('./routes/EventRoutes');
+app.use('/api/events', eventRoutes);
+
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
