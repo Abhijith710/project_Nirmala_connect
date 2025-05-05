@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { FaSearch, FaGraduationCap, FaUserCircle } from 'react-icons/fa';
 import clsx from 'clsx';
+import ActionButtons from '../Buttons/ActionButtons';
+
 
 const dummyData = [
   {
@@ -99,7 +101,7 @@ const Header = () => {
 
       {/* Main Content */}
       <div className="p-6">
-        <h2 className="text-3xl font-bold text-center mb-8">Announcements</h2>
+        <h2 className="text-3xl font-bold text-center mb-8"> News/Announcements </h2>
 
         {/* Search */}
         <div className="relative w-full max-w-md mx-auto mb-6">
@@ -143,10 +145,17 @@ const Header = () => {
                   <br />
                   {format(new Date(item.date), 'hh:mm a')}
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
+                <div className="flex justify-between w-full">
+  <div>
+    <h3 className="text-xl font-semibold">{item.title}</h3>
+    <p className="text-gray-600">{item.description}</p>
+  </div>
+  <ActionButtons
+    onEdit={() => console.log('Edit', item.id)}
+    onDelete={() => console.log('Delete', item.id)}
+  />
+</div>
+
               </div>
             ))
           )}
