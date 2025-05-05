@@ -36,7 +36,7 @@ const dummyData = [
 
 const filters = ['All', 'News', 'Announcements'];
 
-const Header = () => {
+const NewsPage = () => {
   const [search, setSearch] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
 
@@ -59,44 +59,6 @@ const Header = () => {
         marginBottom: '20px',
       }}
     >
-      {/* Header */}
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '20px',
-          color: '#FFFFFF',
-          backgroundColor: '#1976D2',
-          padding: '12px 24px',
-          borderRadius: '10px',
-        }}
-      >
-        {/* Left: Logo and Title */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <FaGraduationCap size={28} style={{ marginRight: '10px' }} />
-          <h1 style={{ fontSize: '20px', fontWeight: 'bold' }}>Nirmala Connect</h1>
-        </div>
-
-        {/* Right: Profile and Logout */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <FaUserCircle size={28} />
-          <button
-            style={{
-              padding: '8px 16px',
-              backgroundColor: '#F57C00',
-              border: 'none',
-              borderRadius: '6px',
-              color: '#FFFFFF',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-            }}
-          >
-            Logout
-          </button>
-        </div>
-      </header>
-
       {/* Main Content */}
       <div className="p-6">
         <h2 className="text-3xl font-bold text-center mb-8">Announcements</h2>
@@ -156,6 +118,6 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NewsPage;
 
 

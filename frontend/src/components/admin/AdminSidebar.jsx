@@ -1,7 +1,7 @@
 // src/components/admin/AdminSidebar.jsx
 
 import React from 'react';
-import { List, ListItem, ListItemButton, ListItemText, Collapse } from '@mui/material';
+import { List, ListItemButton, ListItemText, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 
 const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
@@ -29,8 +29,8 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('UserList')}>
             <ListItemText primary="User List" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('RemoveUser')}>
-            <ListItemText primary="Remove User" />
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeletedUserList')}>
+            <ListItemText primary="Deleted Users" />
           </ListItemButton>
         </List>
       </Collapse>
@@ -45,11 +45,8 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('AddEvent')}>
             <ListItemText primary="Add Event" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('EditEvent')}>
-            <ListItemText primary="Edit Event" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeleteEvent')}>
-            <ListItemText primary="Delete Event" />
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('ViewEvent')}>
+            <ListItemText primary="View Event" />
           </ListItemButton>
         </List>
       </Collapse>
@@ -66,19 +63,11 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('AddNews')}>
             <ListItemText primary="Add News" />
           </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('EditNews')}>
-            <ListItemText primary="Edit News" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeleteNews')}>
-            <ListItemText primary="Delete News" />
+          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('ViewNews')}>
+            <ListItemText primary="View News" />
           </ListItemButton>
         </List>
       </Collapse>
-
-      {/* Traffic Analytics */}
-      <ListItemButton onClick={() => setSelectedSection('TrafficAnalytics')}>
-        <ListItemText primary="Traffic Analytics" />
-      </ListItemButton>
     </List>
   );
 };

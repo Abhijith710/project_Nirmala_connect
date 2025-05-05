@@ -51,6 +51,11 @@ const facultySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    enum: ['active', 'deleted'],
+    default: 'active', // Default status is active
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Faculty', facultySchema);
