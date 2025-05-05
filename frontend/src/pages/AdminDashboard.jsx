@@ -15,6 +15,7 @@ import AddUser from '../components/admin/AddUser';
 import Header from '../components/News/NewsPage';
 import NewsPage from '../components/News/NewsPage';
 import DeletedUsers from '../components/admin/DeletedUsers';
+import TrafficAnalytics from '../components/admin/TrafficAnalytics';
 // import AddNews from '../components/admin/AddNews';
 // import EditNews from '../components/admin/EditNews';
 // import DeleteNews from '../components/admin/DeleteNews';
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
       default:
         return (
           <Box p={3}>
-           {/* <TrafficAnalytics />; */}
+           <TrafficAnalytics />;
           </Box>
         );
     }

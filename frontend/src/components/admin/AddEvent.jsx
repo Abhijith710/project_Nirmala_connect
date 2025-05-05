@@ -4,19 +4,57 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 
 const AddEvent = () => {
-  const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
-  const [description, setDescription] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    date: '',
+    time: '',
+    venue: '',
+    guest: '',
+    description: '',
+    poster: null,
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === 'poster') {
+      setFormData({ ...formData, poster: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Logic to submit event data
-    console.log('Event added:', { title, date, description });
 
-    // Reset form after submission
-    setTitle('');
-    setDate('');
-    setDescription('');
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+
+    try {
+      const res = await fetch('http://localhost:5000/api/events', {
+        method: 'POST',
+        body: data,
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        alert('Event added successfully!');
+        setFormData({
+          title: '',
+          date: '',
+          time: '',
+          venue: '',
+          guest: '',
+          description: '',
+          poster: null,
+        });
+      } else {
+        alert(result.message || 'Something went wrong');
+      }
+    } catch (error) {
+      console.error('Submit Error:', error);
+    }
   };
 
   return (
@@ -25,47 +63,29 @@ const AddEvent = () => {
         Add New Event
       </Typography>
 
-      <form onSubmit={handleSubmit}>
-        {/* Event Title */}
-        <TextField
-          label="Event Title"
-          variant="outlined"
-          fullWidth
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          sx={{ marginBottom: 2 }}
-          required
-        />
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <TextField label="Event Title" name="title" fullWidth required sx={{ mb: 2 }}
+          value={formData.title} onChange={handleChange} />
 
-        {/* Event Date */}
-        <TextField
-          label="Event Date"
-          type="date"
-          variant="outlined"
-          fullWidth
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          sx={{ marginBottom: 2 }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          required
-        />
+        <TextField label="Date" type="date" name="date" fullWidth required sx={{ mb: 2 }}
+          value={formData.date} onChange={handleChange} InputLabelProps={{ shrink: true }} />
 
-        {/* Event Description */}
-        <TextField
-          label="Event Description"
-          variant="outlined"
-          fullWidth
-          multiline
-          rows={4}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          sx={{ marginBottom: 2 }}
-          required
-        />
+        <TextField label="Time" type="time" name="time" fullWidth required sx={{ mb: 2 }}
+          value={formData.time} onChange={handleChange} InputLabelProps={{ shrink: true }} />
 
-        {/* Submit Button */}
+        <TextField label="Venue" name="venue" fullWidth required sx={{ mb: 2 }}
+          value={formData.venue} onChange={handleChange} />
+
+        <TextField label="Guest" name="guest" fullWidth required sx={{ mb: 2 }}
+          value={formData.guest} onChange={handleChange} />
+
+        <TextField label="Description" name="description" multiline rows={4} fullWidth required sx={{ mb: 2 }}
+          value={formData.description} onChange={handleChange} />
+      <Typography variant="subtitle1" sx={{ mb: 1 }}>
+  Add Poster
+</Typography>
+        <input type="file" name="poster" accept="image/*" onChange={handleChange} style={{ marginBottom: '16px' }} />
+
         <Button variant="contained" color="primary" type="submit" fullWidth>
           Add Event
         </Button>

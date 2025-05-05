@@ -15,7 +15,9 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
 
   return (
     <List component="nav" sx={{ width: '100%', maxWidth: 250 }}>
-
+          <ListItemButton sx={{ pl: 2 }} onClick={() => setSelectedSection('default')}>
+            <ListItemText primary="Home" />
+          </ListItemButton>
       {/* Manage Users */}
       <ListItemButton onClick={handleToggleManageUsers}>
         <ListItemText primary="Manage Users" />
