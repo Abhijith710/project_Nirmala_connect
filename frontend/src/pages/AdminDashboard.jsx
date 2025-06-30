@@ -19,6 +19,7 @@ import TrafficAnalytics from '../components/admin/TrafficAnalytics';
 import ViewEvent from '../components/admin/ViewEvent';
 import AddNewsOrAnnouncement from '../components/admin/AddNews';
 import AddNews from '../components/admin/AddNews';
+import ViewNews from '../components/admin/ViewNews';
 // import AddNews from '../components/admin/AddNews';
 // import EditNews from '../components/admin/EditNews';
 // import DeleteNews from '../components/admin/DeleteNews';
@@ -42,7 +43,7 @@ const AdminDashboard = () => {
       case 'AddNews':
         return <AddNews />;
       case 'ViewNews':
-        return <NewsPage />;
+        return <ViewNews/>;
       default:
         return (
           <Box p={3}>
