@@ -45,28 +45,6 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
         </List>
       </Collapse>
 
-      {/* Manage News */}
-      <ListItemButton onClick={handleToggleManageNews}>
-      <ListItemText
-          primary="Manage News/Announcement"
-          primaryTypographyProps={{ noWrap: true }} // Keeps it one line
-        />
-        {openManageNews ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={openManageNews} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }} onClick={handleNavigateToNews}>
-            <ListItemText primary="Add News/Announcement" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => handleNavigateToNews('EditNews')}>
-            <ListItemText primary="Edit News" />
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('DeleteNews')}>
-            <ListItemText primary="Delete News" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-
       {/* Manage Events */}
       <ListItemButton onClick={handleToggleManageEvents}>
         <ListItemText primary="Manage Events" />
@@ -83,24 +61,19 @@ const AdminSidebar = ({ selectedSection, setSelectedSection }) => {
         </List>
       </Collapse>
 
-      {/* Traffic Analytics */}
-      <ListItemButton onClick={() => setSelectedSection('TrafficAnalytics')}>
-        <ListItemText primary="Traffic Analytics" />
-      </ListItemButton>
-
 
       {/* Manage News */}
       <ListItemButton onClick={handleToggleManageNews}>
-        <ListItemText primary="Manage News" />
+        <ListItemText primary="Manage News/Announcement" />
         {openManageNews ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={openManageNews} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('AddNews')}>
-            <ListItemText primary="Add News" />
+            <ListItemText primary="Add News/Announcement" />
           </ListItemButton>
           <ListItemButton sx={{ pl: 4 }} onClick={() => setSelectedSection('ViewNews')}>
-            <ListItemText primary="View News" />
+            <ListItemText primary="View News/Announcement" />
           </ListItemButton>
         </List>
       </Collapse>

@@ -28,7 +28,7 @@ const eventSchema = new mongoose.Schema({
   },
   poster: {
     type: String, // filename or URL of the image
-    default: "https://png.pngtree.com/png-clipart/20230802/original/pngtree-booklet-flyer-icon-vector-picture-image_7831085.png",
+    default: 'https://png.pngtree.com/png-clipart/20230802/original/pngtree-booklet-flyer-icon-vector-picture-image_7831085.png',
   },
 }, { timestamps: true });
 

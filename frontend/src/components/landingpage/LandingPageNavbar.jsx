@@ -4,6 +4,7 @@ import LogoIcon from '@mui/icons-material/School';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useMediaQuery, useTheme, Slide, useScrollTrigger } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HideOnScroll = React.forwardRef(function HideOnScroll(props, ref) {
   const { children } = props;
@@ -20,7 +21,9 @@ const HideOnScroll = React.forwardRef(function HideOnScroll(props, ref) {
   );
 });
 
+
 const LandingPageNavbar = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -61,7 +64,9 @@ const LandingPageNavbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  const handleClick = () => {
+    navigate('/login');  // Redirect to login page
+  };
   return (
     <HideOnScroll>
    <AppBar
@@ -153,6 +158,7 @@ const LandingPageNavbar = () => {
                     backgroundColor: '#E65100',
                   },
                 }}
+                onClick={handleClick}
               >
                 Login
               </Button>

@@ -3,8 +3,14 @@ import { Box, Container, Grid, Button, Typography } from '@mui/material';
 import img from '../../assets/img.png'; // Make sure the path is correct
 import { motion } from 'framer-motion';
 import LogoIcon from '@mui/icons-material/School';
+import { useNavigate } from 'react-router-dom';
+
 
 const HeroSection = () => {
+    const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/login');  // Redirect to login page
+  };
   return (
     <Box
       id="nirmala-connect"
@@ -131,6 +137,7 @@ const HeroSection = () => {
                     backgroundColor: '#E65100',
                   },
                 }}
+                onClick={handleClick}
               >
                 Explore Now
               </Button>

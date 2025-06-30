@@ -18,8 +18,10 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Parse JSON bodies
 
-// Serve static files (for uploaded profile pictures)
+
+// Serve static files from /uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Routes
 const userRoutes = require('./routes/UserRoutes');
@@ -39,6 +41,10 @@ app.use('/api/login', loginRoutes);
 
 const eventRoutes = require('./routes/EventRoutes');
 app.use('/api/events', eventRoutes);
+
+
+const newsRoutes = require('./routes/NewsRoutes');
+app.use('/api/news', newsRoutes);
 
 
 // Start server
